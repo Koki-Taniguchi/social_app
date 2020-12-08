@@ -2,8 +2,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class PhotoClient {
-  static const String EndPoint = 'https://1ecae23e61a0.ngrok.io';
-  static const String Directory = '/';
+  static const String EndPoint =
+      'https://asia-northeast1-keen-genius-283611.cloudfunctions.net';
+  static const String Directory = '/photos';
 
   static Future<Map<String, dynamic>> get() async {
     try {

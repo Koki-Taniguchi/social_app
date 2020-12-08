@@ -16,26 +16,37 @@ class MapAppState extends State<MapApp> {
     PhotoSlider slider = PhotoSlider(pages: Photo.toWidgets(arguments.photos));
 
     return new Scaffold(
-      body: Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: <Widget>[
-          GoogleMap(
-              mapType: MapType.normal,
-              zoomControlsEnabled: false,
-              zoomGesturesEnabled: false,
-              myLocationEnabled: true,
-              myLocationButtonEnabled: true,
-              initialCameraPosition: arguments.currentCameraPosition,
-              onMapCreated: (GoogleMapController controller) {
-                slider.mapComplete(controller);
-              },
-              markers: Photo.toMarkers(arguments.photos)),
-          SizedBox(
-            height: 150.0,
-            child: slider,
-          )
-        ],
-      ),
-    );
+        body: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: <Widget>[
+            GoogleMap(
+                mapType: MapType.normal,
+                zoomControlsEnabled: false,
+                zoomGesturesEnabled: false,
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true,
+                initialCameraPosition: arguments.currentCameraPosition,
+                onMapCreated: (GoogleMapController controller) {
+                  slider.mapComplete(controller);
+                },
+                markers: Photo.toMarkers(arguments.photos)),
+            SizedBox(
+              height: 150.0,
+              child: slider,
+            )
+          ],
+        ),
+        floatingActionButton: Container(
+          margin: EdgeInsets.only(bottom: 150.0),
+          child: FloatingActionButton(
+            onPressed: showPostForm,
+            child: Icon(Icons.add_a_photo),
+            // child: Icon(Icons.add_a_photo),
+          ),
+        ));
+  }
+
+  void showPostForm() {
+    debugPrint("pushed");
   }
 }
