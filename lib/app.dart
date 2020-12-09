@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/photoForm',
+      initialRoute: '/signIn',
       routes: <String, WidgetBuilder>{
         '/signIn': (BuildContext context) => SignInPage(),
         '/signUp': (BuildContext context) => SignUpPage(),

@@ -46,7 +46,7 @@ class MapAppState extends State<MapApp> {
         ));
   }
 
-  void showPostForm() {
-    debugPrint("pushed");
+  void showPostForm() async {
+    await Navigator.of(context).pushReplacementNamed('/photoForm');
   }
 }
