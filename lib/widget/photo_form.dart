@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:social_picture/context/arguments/to_home_arguments.dart';
 
 import 'package:social_picture/http_services/photo_client.dart';
 import 'package:social_picture/models/entities/photo.dart';
@@ -131,7 +129,7 @@ class _PhotoFromState extends State<PhotoFrom> {
         _currentPosition.latitude, _currentPosition.longitude);
 
     PhotoClient.post(photo);
-    goToHomePage(context, _currentPosition);
+    goToHomePage(context);
   }
 
   Future<int> showCupertinoBottomBar() {
@@ -169,17 +167,7 @@ class _PhotoFromState extends State<PhotoFrom> {
         });
   }
 
-  Future<List<Photo>> _getNearbyPhotos() async {
-    Map<String, dynamic> res = await PhotoClient.get();
-    return Photo.fromJsonArray(res);
-  }
-
-  void goToHomePage(context, Position currentPosition) async {
-    CameraPosition _currentCameraPosition = CameraPosition(
-        target: LatLng(currentPosition.latitude, currentPosition.longitude),
-        zoom: 20.0);
-    List<Photo> _photos = await _getNearbyPhotos();
-    await Navigator.of(context).pushReplacementNamed('/home',
-        arguments: ToHomeArguments(_currentCameraPosition, _photos));
+  void goToHomePage(context) async {
+    await Navigator.of(context).pushReplacementNamed('/loading');
   }
 }

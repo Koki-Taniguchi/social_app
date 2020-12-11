@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import '../models/entities/photo.dart';
+import 'package:social_picture/models/entities/photo.dart';
 
 class PhotoWidgetBox extends StatefulWidget {
   final Photo photo;

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -110,18 +108,7 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Future<CameraPosition> _goToCurrentPosition() async {
-    Position _currentPosition =
-        await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    CameraPosition _currentCameraPosition = CameraPosition(
-        target: LatLng(_currentPosition.latitude, _currentPosition.longitude),
-        zoom: 20.0);
-    return _currentCameraPosition;
-  }
-
   void goToHomePage(context) async {
-    CameraPosition _currentCameraPosition = await _goToCurrentPosition();
-    await Navigator.of(context)
-        .pushReplacementNamed('/home', arguments: _currentCameraPosition);
+    await Navigator.of(context).pushReplacementNamed('/loading');
   }
 }
