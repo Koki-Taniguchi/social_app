@@ -52,14 +52,16 @@ class _LoadingState extends State<Loading> with RouteAware {
     return _currentCameraPosition;
   }
 
-  Future<List<Photo>> _getNearbyPhotos() async {
-    Map<String, dynamic> res = await PhotoClient.get();
+  Future<List<Photo>> _getNearbyPhotos(double lat, double lng) async {
+    Map<String, dynamic> res = await PhotoClient.get(lat, lng);
     return Photo.fromJsonArray(res);
   }
 
   void goToHomePage(context) async {
     CameraPosition _currentCameraPosition = await _goToCurrentPosition();
-    List<Photo> _photos = await _getNearbyPhotos();
+    List<Photo> _photos = await _getNearbyPhotos(
+        _currentCameraPosition.target.latitude,
+        _currentCameraPosition.target.longitude);
     await Navigator.of(context).pushReplacementNamed('/home',
         arguments: ToHomeArguments(_currentCameraPosition, _photos));
   }
