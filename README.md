@@ -1,6 +1,10 @@
 # social_app
 
-A new Flutter application.
+位置情報と連携した画像投稿アプリ
+近くの投稿を見ることができる
+現在地を紐付けて画像を投稿できる
+![](https://user-images.githubusercontent.com/48054864/112505831-804a5080-8dd0-11eb-903a-197524acad10.png)
+
 
 ## Getting Started
 
